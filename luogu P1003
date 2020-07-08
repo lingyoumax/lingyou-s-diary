@@ -1,0 +1,28 @@
+这一题做的我有点飘啊，主要思想就是从编号比较大的先开始遍历，一次过，虽然可能会有人会吐槽我做的太简单了，本来想用栈的，，但是感觉栈就是杀鸡用牛刀了。
+以下是我的代码:
+
+
+
+#include<iostream>
+using namespace std;
+int main() {
+	int n;
+	cin >> n;
+	int ** sj = new int *[n];
+	for (int i = 0;i < n;i++) {
+		sj[i] = new int[4];
+	}
+	for (int i = 0;i < n ;i++) {
+		cin >> sj[i][0] >> sj[i][1] >> sj[i][2] >> sj[i][3];
+	}
+	int x, y;
+	cin >> x >> y;
+	for (int i = (n - 1);i >= 0;i--) {
+		if ((x >= sj[i][0])&&(y>=sj[i][1])&&(x<=(sj[i][0]+sj[i][2]))&&(y<=(sj[i][1]+sj[i][3]))) {
+			cout << i+1 << endl;
+			return 0;
+		}
+	}
+	cout << -1;
+	return 0;
+}
