@@ -1,1 +1,36 @@
+这一题我在做之前是看了题解的，但是好吓人，有人用了4维数组，特别恐怖
+时间复杂度姑且不计，n^4空间复杂度就太恐怖了，但是注意到题目的一个性质，就是每个点的值只与前面一次遍历到的点有关，可以再次采用滚动数组的方法
+以下是我的代码
 
+#include<iostream>
+#include <algorithm>
+#define ll long long
+using namespace std;
+ll f[11][11];
+ll map[11][11];
+int main() {
+	int n;
+	cin >> n;
+	while (true) {
+		ll x, y, z;
+		cin >> x >> y >> z;
+		if ((!x) && (!y) && (!z)) {
+			break;
+		}
+		map[x++][y++] = z;
+	}
+	for (int l = 2;l <= n * 2;l++) {
+		for (int i = l - 1;i >= 1;i--) {
+			for (int ii = l - 1;ii >= 1;ii--){
+				int j = l - i;
+				int jj = l - ii;
+				if ((i <= n) && (j <= n) && (ii <= n) && (jj <= n)) {
+					f[i][ii] = max(max(f[i][ii], f[i - 1][ii - 1]), max(f[i - 1][ii], f[i][ii - 1])) + map[i][j];
+					f[i][ii] += map[ii][jj] * (i != ii);
+				}
+			}
+		}
+	}
+	cout << f[n][n] << endl;
+	return 0;
+}
