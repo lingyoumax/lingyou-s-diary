@@ -1,5 +1,3 @@
-才发现洛谷有P1000这题，“万事开头难”，溜了溜了
-
 #include<iostream>
 using namespace std;
 int main(){
