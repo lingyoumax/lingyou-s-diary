@@ -41,10 +41,9 @@ int dfs(int i) {
 	mystack.push(i);
 	len += word[i].size();
 	l = len;
-	int begin[2] = { -1,-1 };
-	bool flag = 0;
+	int begin = -1;
 	while (true) {
-		int j = begin[flag] + 1;
+		int j = begin + 1;
 		while (j < n) {
 			if ((use[j]<2) && (jc[mystack.top()][j])) {
 				break;
@@ -53,21 +52,20 @@ int dfs(int i) {
 		}
 		if (j >= n) {
 			len = max(len, l);
-			begin[flag] = mystack.top();
-			use[begin[flag]]--;
-			l -= word[begin[flag]].size();
+			begin = mystack.top();
+			use[begin]--;
+			l -= word[begin].size();
 			mystack.pop();
 			if (mystack.empty()) {
 				break;
 			}
-			l += jc[mystack.top()][begin[flag]];
+			l += jc[mystack.top()][begin];
 			if ((mystack.top() == i)&&(mystack.size()==1)) {
 				break;
 			}
 		}
 		else {
-			flag = !flag;
-			begin[flag] = -1;
+			begin = -1;
 			use[j]++;
 			l -= jc[mystack.top()][j];
 			mystack.push(j);
