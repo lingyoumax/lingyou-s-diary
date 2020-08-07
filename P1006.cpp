@@ -1,3 +1,4 @@
+```cpp
 #include<iostream>
 #include <algorithm>
 #define ll long long
@@ -24,3 +25,4 @@ int main() {
 	cout << f[(m*(m + 1)) / 2 + m - 1];
 	return 0;
 }
+```
