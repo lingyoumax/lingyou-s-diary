@@ -5,7 +5,6 @@ int b_num[19];
 int main() {
 	int a, n, m, x;
 	cin >> a >> n >> m >> x;
-	
 	a_num[0] = 1;
 	a_num[1] = 1;
 	a_num[2] = 2;
