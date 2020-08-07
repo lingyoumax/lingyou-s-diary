@@ -1,4 +1,3 @@
-```cpp
 #include<iostream>
 #include <algorithm>
 using namespace std;
@@ -22,4 +21,3 @@ int main() {
 	cout << minl << " " << maxl << endl;
 	return 0;
 }
-```cpp
