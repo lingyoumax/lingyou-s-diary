@@ -1,3 +1,4 @@
+```cpp
 #include<iostream>
 #include <algorithm>
 #define ll long long
@@ -30,3 +31,4 @@ int main() {
 	cout << f[n][n] << endl;
 	return 0;
 }
+```
