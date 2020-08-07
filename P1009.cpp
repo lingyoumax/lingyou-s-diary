@@ -1,4 +1,3 @@
-```cpp
 #include<iostream>
 const long long num = 100000000000000000;
 using namespace std;
@@ -68,4 +67,3 @@ int main() {
 	print(ans);
 	return 0;
 }
-```
