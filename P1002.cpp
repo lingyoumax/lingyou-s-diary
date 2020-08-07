@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #define ull unsigned long long
 using namespace std;
@@ -30,4 +29,3 @@ int main() {
 	cout << f[by];
 	return 0;
 }
-```
