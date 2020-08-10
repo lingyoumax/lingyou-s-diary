@@ -1,6 +1,7 @@
 #include<iostream>
 #include<algorithm>
 #include<cmath>
+#include<queue>
 #include<iomanip>
 using namespace std;
 double map[401][401];
@@ -57,18 +58,41 @@ void init(int s,int t) {
 		}
 	}
 }
-void floyd(int a, int b,int s) {
-	for (int p = 0;p < s;p++) {
-		for (int m = 0;m < s;m++) {
-			for (int n = 0;n < s;n++) {
-				map[m][n] = min(map[m][n], map[m][p] + map[p][n]);
+double spfa(int a, int b, int s) {
+	double dis[401];
+	bool use[401];
+	for (int i = 0;i < s;i++) {
+		dis[i] = 99999999.9999;
+		use[i] = false;
+	}
+	dis[a] = 0;
+	use[a] = true;
+	queue<int> q;
+	q.push(a);
+	while (!q.empty()) {
+		int x = q.front();
+		q.pop();
+		use[x] = 0;
+		for (int i = 1;i < s;i++) {
+			if (i == x) {
+				continue;
+			}
+			if ((dis[x] + map[x][i]) < dis[i]) {
+				dis[i] = dis[x] + map[x][i];
+				if (!use[i]) {
+					use[i] = 1;
+					q.push(i);
+				}
 			}
 		}
 	}
-	double ans = map[4 * a][4 * b];
-	for (int j = 0;j < 4;j++) {
-		for (int k = 0;k < 4;k++) {
-			ans = min(ans, map[4 * a + j][4 * b + k]);
+	return dis[b];
+}
+void test_spfa(int a,int b,int s) {
+	double ans = 999999;
+	for (int i = 0;i < 4;i++) {
+		for (int j = 0;j < 4;j++) {
+			ans = min(ans, spfa(4 * a + i, 4 * b + j, s));
 		}
 	}
 	cout << std::fixed << std::setprecision(1) << ans << endl;
@@ -79,16 +103,16 @@ void test() {
 	a--;
 	b--;
 	for (int j = 0;j < 4 * s;j += 4) {
-		cin >> point[j][0] >> point[j][1] >> point[j + 1][0] >> point[j + 1][1] >> point[j + 2][0] >> point[j + 2][1] >> T[j/4];
+		cin >> point[j][0] >> point[j][1] >> point[j + 1][0] >> point[j + 1][1] >> point[j + 2][0] >> point[j + 2][1] >> T[j / 4];
 		get_point(j);
 	}
 	init(4 * s, t);
-	floyd(a, b, 4 * s);
+	test_spfa(a, b, 4 * s);
 }
 int main() {
 	cin >> n;
 	while (n--) {
-		test(n);
+		test();
 	}
 	return 0;
 }
