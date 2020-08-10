@@ -27,7 +27,7 @@ int main() {
 			for (int k = 0;k < s;k++) {
 				string::size_type position;
 				position = st.find(word[k]);
-				if ((position!=st.npos)&&(position==0)) {
+				if (position==0) {
 					flag = true;
 				}
 			}
