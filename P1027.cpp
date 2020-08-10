@@ -57,7 +57,7 @@ void init(int s,int t) {
 		}
 	}
 }
-void floyd(int i, int a, int b,int s) {
+void floyd(int a, int b,int s) {
 	for (int p = 0;p < s;p++) {
 		for (int m = 0;m < s;m++) {
 			for (int n = 0;n < s;n++) {
@@ -82,8 +82,8 @@ void test(int i) {
 		cin >> point[j][0] >> point[j][1] >> point[j + 1][0] >> point[j + 1][1] >> point[j + 2][0] >> point[j + 2][1] >> T[j/4];
 		get_point(j);
 	}
-	init( 4 * s, t);
-	floyd(i, a, b, 4 * s);
+	init(4 * s, t);
+	floyd(a, b, 4 * s);
 }
 int main() {
 	cin >> n;
