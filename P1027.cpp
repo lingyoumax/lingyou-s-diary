@@ -73,7 +73,7 @@ void floyd(int a, int b,int s) {
 	}
 	cout << std::fixed << std::setprecision(1) << ans << endl;
 }
-void test(int i) {
+void test() {
 	int s, t, a, b;
 	cin >> s >> t >> a >> b;
 	a--;
